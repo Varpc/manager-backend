@@ -4,6 +4,7 @@ import os
 from flask import Flask
 from manager.settings import config
 from manager.extensions import db
+from manager.apis import apis
 
 
 def create_app(config_name=None):
@@ -14,6 +15,7 @@ def create_app(config_name=None):
     app.config.from_object(config[config_name])
 
     register_extensions(app)
+    register_blueprint(app)
 
     @app.route('/')
     def index():
@@ -24,3 +26,7 @@ def create_app(config_name=None):
 
 def register_extensions(app: Flask):
     db.init_app(app)
+
+
+def register_blueprint(app: Flask):
+    app.register_blueprint(apis, url_prefix='/api')

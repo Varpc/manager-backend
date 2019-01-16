@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from manager.extensions import db
-from manager.models import User
+from manager.models import User, Problems, Group
 from faker import Faker
 import random
 
@@ -26,11 +26,22 @@ def user_fake():
     length = len(classes)
 
     for i in range(80):
+        name = fake.name()
         index = int(random.random() * length)
-        user = User(name=fake.name(), class_=classes[index], username=fake.user_name(), is_admin=False)
-        user.set_password('12345')
+        class_ = classes[index]
+        image = 'E:\manager-backend\image\1.jpeg'
+
+        user = User(name=name, class_=class_, image=image, username=fake.user_name(), is_admin=False,
+                    vjid=fake.user_name())
+        user.set_password('1234')
+
+        problems = Problems(name=name, class_=class_, count=fake.random_int(), blue_book=fake.random_int(),
+                            purple_book=fake.random_int(), sum=fake.random_int(), uva=fake.random_int(),
+                            hdu=fake.random_int(), poj=fake.random_int(), cf=fake.random_int(), bc=fake.random_int(),
+                            status=int(random.random() * 4))
         try:
+            user.problems = problems
             db.session.add(user)
-            db.session.commit()
+            db.session.add(problems)
         except:
-            pass
+            db.session.rollback()
