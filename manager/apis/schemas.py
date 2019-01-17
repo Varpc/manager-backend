@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import url_for
-from manager.models import Problems, User
+from manager.models import Problems, User, JiSuanKe, Codeforces
 
 
 def problems_schema(problems: Problems):
@@ -30,4 +29,27 @@ def user_schema(user: User):
         'username': user.username,
         'is_admin': user.is_admin,
         'vjid': user.vjid
+    }
+
+
+# 格式化近期比赛数据
+def jisuanke_schema(jsk: JiSuanKe):
+    return {
+        'id': jsk.id,
+        'type': jsk.type,
+        'contest': jsk.contest,
+        'url': jsk.url,
+        'begin_time': jsk.begin_time,
+        'time': jsk.time
+    }
+
+
+def codeforces_schema(cf: Codeforces):
+    return {
+        'id': cf.id,
+        'contest': cf.contest,
+        'url': cf.url,
+        'writer': cf.writer,
+        'begin_time': cf.begin_time,
+        'time': cf.time
     }

@@ -5,6 +5,7 @@ from flask import Flask
 from manager.settings import config
 from manager.extensions import db
 from manager.apis import apis
+from manager.crawler.crawlers import crawler_bp
 
 
 def create_app(config_name=None):
@@ -19,7 +20,7 @@ def create_app(config_name=None):
 
     @app.route('/')
     def index():
-        return '<h1>Hello</h1>'
+        return 'true'
 
     return app
 
@@ -30,3 +31,4 @@ def register_extensions(app: Flask):
 
 def register_blueprint(app: Flask):
     app.register_blueprint(apis, url_prefix='/api')
+    app.register_blueprint(crawler_bp, url_prefix='/update')
