@@ -3,7 +3,7 @@ from flask import Blueprint
 import requests
 from bs4 import BeautifulSoup
 from manager.extensions import db
-from manager.models import JiSuanKe, Codeforces
+from manager.models import JiSuanKe, Codeforces, Root
 
 crawler_bp = Blueprint('crawler', __name__)
 

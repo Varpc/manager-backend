@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from manager.extensions import db
-from manager.models import User, Problems, Group
+from manager.models import User, Problems, Root
+from sqlalchemy.exc import IntegrityError
 from faker import Faker
 import random
 
@@ -10,10 +11,10 @@ classes = ['计算机17-1', '计算机17-2', '计算机17-3', '计算机17-4', '
            '物联网17-2']
 
 
-def fakes():
-    db.drop_all()
-    db.create_all()
-    user_fake()
+def root_fake():
+    root = Root()
+    db.session.add(root)
+    db.session.commit()
 
 
 def user_fake():
@@ -29,8 +30,7 @@ def user_fake():
         name = fake.name()
         index = int(random.random() * length)
         class_ = classes[index]
-        image = 'E:\manager-backend\image\1.jpeg'
-
+        image = r'E:\manager-backend\image\1.jpeg'
         user = User(name=name, class_=class_, image=image, username=fake.user_name(), is_admin=False,
                     vjid=fake.user_name())
         user.set_password('1234')
@@ -43,5 +43,6 @@ def user_fake():
             user.problems = problems
             db.session.add(user)
             db.session.add(problems)
-        except:
+            db.session.commit()
+        except IntegrityError:
             db.session.rollback()

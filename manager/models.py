@@ -1,21 +1,34 @@
 # -*- coding: utf-8 -*-
 
 from manager.extensions import db
+from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+
+from manager.settings import BaseConfig
 
 
 class Root(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     board = db.Column(db.Text)  # 首页公告板内容
+    image = db.relationship('Image', back_populates='root')
+    jisuanke_update_time = db.Column(db.DateTime, default=datetime.now)
+    codeforces_update_time = db.Column(db.DateTime, default=datetime.now)
     # 另加各种更新的时间
+
+
+class Image(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    url = db.Column(db.String(256), default=BaseConfig.DEFAULT_HOME_IMAGE_URI)
+    root_id = db.Column(db.Integer, db.ForeignKey('root.id'))
+    root = db.relationship('Root', back_populates='image')
 
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable=False)
     class_ = db.Column(db.String(200), nullable=False)  # 加下划线与关键字不重复
-    image = db.Column(db.String(200), default='/static/image/default.png')
-    username = db.Column(db.String(256), nullable=False, index=True)
+    image = db.Column(db.String(256), default=BaseConfig.DEFAULT_HEAD_IMAGE_URI)
+    username = db.Column(db.String(256), nullable=False, unique=True)
     password_hash = db.Column(db.String(256))
     is_admin = db.Column(db.Boolean, default=False)
     vjid = db.Column(db.String(200))
@@ -23,8 +36,8 @@ class User(db.Model):
     # 外键
     group_id = db.Column(db.Integer, db.ForeignKey('group.id'))
     group = db.relationship('Group', back_populates='member')
-
-    problems = db.relationship('Problems', uselist=False)
+    #
+    problems = db.relationship('Problems', back_populates='user', uselist=False)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -35,8 +48,8 @@ class User(db.Model):
 
 class Problems(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(200),)
-    class_ = db.Column(db.String(200))
+    name = db.Column(db.String(200), nullable=False)
+    class_ = db.Column(db.String(200), nullable=False)
     count = db.Column(db.Integer, default=0)
     blue_book = db.Column(db.Integer, default=0)
     purple_book = db.Column(db.Integer, default=0)
@@ -46,10 +59,10 @@ class Problems(db.Model):
     poj = db.Column(db.Integer, default=0)
     cf = db.Column(db.Integer, default=0)
     bc = db.Column(db.Integer, default=0)
-    status = db.Column(db.Integer)  # 0审核 1现役 2退役 3除名
+    status = db.Column(db.Integer, default=0)  # 0审核 1现役 2退役 3除名
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship('User')
+    user = db.relationship('User', back_populates='problems')
 
 
 class Group(db.Model):

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import click
 from flask import Flask
 from manager.settings import config
 from manager.extensions import db
@@ -17,6 +18,7 @@ def create_app(config_name=None):
 
     register_extensions(app)
     register_blueprint(app)
+    register_commands(app)
 
     @app.route('/')
     def index():
@@ -32,3 +34,21 @@ def register_extensions(app: Flask):
 def register_blueprint(app: Flask):
     app.register_blueprint(apis, url_prefix='/api')
     app.register_blueprint(crawler_bp, url_prefix='/update')
+
+
+def register_commands(app: Flask):
+    @app.cli.command()
+    def forge():
+        from manager.fakes import root_fake, user_fake
+        click.echo("Drop database")
+        db.drop_all()
+        click.echo("Create new databases")
+        db.create_all()
+
+        click.echo('generate root data')
+        root_fake()
+
+        click.echo('generate user and problems data')
+        user_fake()
+
+        click.echo("Done")
