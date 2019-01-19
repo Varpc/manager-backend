@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from flask import jsonify, request
+import uuid, os
+from flask import jsonify, request, current_app
 from flask.views import MethodView
-from datetime import datetime
 
 from manager.apis.schemas import problems_schema, user_schema, jisuanke_schema, codeforces_schema
 from manager.apis.error import api_abort
@@ -88,6 +88,18 @@ class BoardApi(MethodView):
         root.board = html
         db.session.commit()
         return api_abort(200, '提交成功')
+
+
+# 富文本编辑器的媒体文件提交api
+class EditerMediaApi(MethodView):
+    def post(self):
+        file = request.files['file']
+        if file:
+            filename = str(uuid.uuid1()) + file.filename
+            filepath = os.path.join(current_app.config['IMAGE_DIR'], filename)
+            file.save(filepath)
+            return current_app.config['IMAGE_DIR_SUFFIX'] + filename, 200
+        return api_abort(400)
 
 
 # 近期比赛api

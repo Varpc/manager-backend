@@ -3,7 +3,7 @@ from flask import Blueprint
 
 apis = Blueprint('apis', __name__)
 
-from manager.apis.resources import ProblemsApi, AuthTokenApi, RegisterApi, JisuankeApi, CodeforcesApi, BoardApi
+from manager.apis.resources import ProblemsApi, AuthTokenApi, RegisterApi, JisuankeApi, CodeforcesApi, BoardApi, EditerMediaApi
 
 apis.add_url_rule('/problems', view_func=ProblemsApi.as_view('problems_api'), methods=['GET'])
 apis.add_url_rule('/auth', view_func=AuthTokenApi.as_view('auth_api'), methods=['POST', 'DELETE'])
@@ -13,3 +13,5 @@ apis.add_url_rule('/contest/jisuanke', view_func=JisuankeApi.as_view('jisuanke_a
 apis.add_url_rule('/contest/codeforces', view_func=CodeforcesApi.as_view('codeforces_api'), methods=['GET'])
 
 apis.add_url_rule('/admin/board', view_func=BoardApi.as_view('board_api'), methods=['GET', 'POST'])
+
+apis.add_url_rule('/media', view_func=EditerMediaApi.as_view('media_api'), methods=['POST'])
