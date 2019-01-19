@@ -2,12 +2,13 @@
 
 from flask import jsonify, request
 from flask.views import MethodView
+from datetime import datetime
 
 from manager.apis.schemas import problems_schema, user_schema, jisuanke_schema, codeforces_schema
 from manager.apis.error import api_abort
 from manager.apis.auth import generate_token, validate_token
 from manager.extensions import db
-from manager.models import User, Problems, JiSuanKe, Codeforces
+from manager.models import User, Problems, JiSuanKe, Codeforces, Root
 
 
 class ProblemsApi(MethodView):
@@ -70,6 +71,25 @@ class RegisterApi(MethodView):
         return jsonify(user_schema(user))
 
 
+# 首页公告提交
+class BoardApi(MethodView):
+    def get(self):
+        root = Root.query.first()
+        return jsonify(html=root.board)
+
+    def post(self):
+        data = request.get_json()
+        if data is None:
+            return api_abort(400, '提交失败')
+        html = data.get('html')
+        if html is None:
+            return api_abort(400, '提交失败')
+        root = Root.query.first()
+        root.board = html
+        db.session.commit()
+        return api_abort(200, '提交成功')
+
+
 # 近期比赛api
 class JisuankeApi(MethodView):
     def get(self):
@@ -77,7 +97,10 @@ class JisuankeApi(MethodView):
         data = []
         for item in jsk:
             data.append(jisuanke_schema(item))
-        return jsonify(data=data)
+        root = Root.query.first()
+        if root is not None:
+            time = root.jisuanke_update_time.strftime('%Y-%m-%d %H:%M:%S')
+        return jsonify(data=data, time=time)
 
 
 class CodeforcesApi(MethodView):
@@ -86,4 +109,8 @@ class CodeforcesApi(MethodView):
         data = []
         for item in codeforces:
             data.append(codeforces_schema(item))
-        return jsonify(data=data)
+        root = Root.query.first()
+        if root is not None:
+            time = root.codeforces_update_time.strftime('%Y-%m-%d %H:%M:%S')
+        return jsonify(data=data, time=time)
+

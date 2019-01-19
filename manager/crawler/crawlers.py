@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint
 import requests
+from datetime import datetime
 from bs4 import BeautifulSoup
 from manager.extensions import db
 from manager.models import JiSuanKe, Codeforces, Root
@@ -35,11 +36,16 @@ def update_jisuanke():
         db.session.add(jsk)
     db.session.commit()
 
+    root = Root.query.first()
+    root.jisuanke_update_time = datetime.now()
+    db.session.commit()
+
     return 'OK', r.status_code
 
 
 @crawler_bp.route('/codeforces', methods=['GET'])
-def update_codeforces():
+def update_code_forces():
+    r = None
     try:
         r = requests.get('http://codeforces.com/contests')
     except:
@@ -63,4 +69,9 @@ def update_codeforces():
         codeforces = Codeforces(contest=contest, writer=writer, begin_time=begin_time, url=url, time=time)
         db.session.add(codeforces)
     db.session.commit()
+
+    root = Root.query.first()
+    root.codeforces_update_time = datetime.now()
+    db.session.commit()
+
     return 'OK', r.status_code
