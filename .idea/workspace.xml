@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="90ac512a-8c97-4788-95a2-01f36c3b2926" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crawler_manager/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crawler_manager/setting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/apis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager/apis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/apis/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager/apis/resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/crawler/crawlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager/crawler/crawlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager/models.py" afterDir="false" />
-    </list>
+    <list default="true" id="90ac512a-8c97-4788-95a2-01f36c3b2926" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +59,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/crawler_manager/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
+            <state relative-caret-position="-220">
               <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
               <folding>
                 <element signature="e#25#154#0" expanded="true" />
@@ -196,7 +187,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="56" />
     <option name="y" value="-18" />
     <option name="width" value="1344" />
@@ -343,12 +334,12 @@
       <workItem from="1547698877794" duration="10072000" />
       <workItem from="1547789324202" duration="13362000" />
       <workItem from="1547873247363" duration="13526000" />
-      <workItem from="1547952073309" duration="27384000" />
+      <workItem from="1547952073309" duration="27627000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70486000" />
+    <option name="totallyTimeSpent" value="70729000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -361,7 +352,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892473" weight="0.16577825" />
       <window_info id="Structure" order="1" sideWeight="0.50107527" side_tool="true" weight="0.33868894" />
@@ -377,7 +367,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3286334" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.28633407" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.34924078" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.43261456" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -561,7 +551,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/crawler_manager/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
+        <state relative-caret-position="-220">
           <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
           <folding>
             <element signature="e#25#154#0" expanded="true" />
