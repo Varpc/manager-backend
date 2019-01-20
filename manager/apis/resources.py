@@ -135,10 +135,12 @@ class HomeImageApi(MethodView):
         image_url = data.get('imgURL')
         if image_url is None:
             return api_abort(400)
-        filename = image_url.split('/\\')[-1:][0]
-        filepath = current_app.config['IMAGE_DIR'] + filename
-        if os.path.exists(filepath):
-            os.remove(filepath)
+        filename = image_url.split('/')[-1:][0]
+        filepath = current_app.config['IMAGE_DIR']
+        print(filename)
+        os.chdir(filepath)
+        if os.path.exists(filename):
+            os.remove(filename)
         image = Image.query.filter_by(url=image_url).first()
         if image is not None:
             db.session.delete(image)

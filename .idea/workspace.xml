@@ -2,13 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90ac512a-8c97-4788-95a2-01f36c3b2926" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/apis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager/apis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/apis/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager/apis/resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/1.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/manager-backend.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/apis/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/apis/auth.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/apis/error.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/apis/resources.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/apis/schemas.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/crawler/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/crawler/crawlers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/extensions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/fakes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/16c7791c-1c71-11e9-b665-f48e38f2dd5c10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/1ddd254c-1c71-11e9-94f9-f48e38f2dd5c19.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/21efc828-1c71-11e9-9cb1-f48e38f2dd5c19.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/4430b064-1c79-11e9-bbdc-f48e38f2dd5c2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/773b956c-1c6f-11e9-8cc7-f48e38f2dd5c0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/8a6287e4-1c74-11e9-bb33-f48e38f2dd5c1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/b01d411a-1c7e-11e9-8caa-f48e38f2dd5c95.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/b2165ddc-1c7e-11e9-8a1f-f48e38f2dd5c87.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/b38a7a12-1c7d-11e9-91ea-f48e38f2dd5c1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/b3d6bbe6-1c7e-11e9-896e-f48e38f2dd5c15.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/b5ef8c6c-1c7e-11e9-8556-f48e38f2dd5c119.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/b76f12cc-1c7d-11e9-af8d-f48e38f2dd5c20.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/b963efb4-1c7d-11e9-a63d-f48e38f2dd5c17.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/bb77d864-1c7d-11e9-8857-f48e38f2dd5c51.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/bdc66f38-1c7d-11e9-b1a7-f48e38f2dd5c28.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/be5b49e6-1c7e-11e9-a029-f48e38f2dd5c90.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/c0d9f3b0-1c7e-11e9-af03-f48e38f2dd5c77.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/c5420106-1c7e-11e9-90fc-f48e38f2dd5c148.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/static/image/d0defdf0-1c7e-11e9-8686-f48e38f2dd5c27.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/utils.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,7 +55,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/manager_backend$manager.coverage" NAME="manager Coverage Results" MODIFIED="1547958203013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/manager_backend$manager.coverage" NAME="manager Coverage Results" MODIFIED="1547970913534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -48,7 +86,30 @@
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manager/apis/resources.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="11">
+              <caret line="143" selection-start-line="143" selection-end-line="143" />
+              <folding>
+                <element signature="e#25#40#0" expanded="true" />
+                <marker date="1547970913366" expanded="true" signature="468:473" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="394">
+              <caret line="105" column="21" lean-forward="true" selection-start-line="105" selection-start-column="21" selection-end-line="105" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -73,14 +134,14 @@
         <option value="$PROJECT_DIR$/manager/__init__.py" />
         <option value="$PROJECT_DIR$/manager/models.py" />
         <option value="$PROJECT_DIR$/manager/crawler/crawlers.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/manager/settings.py" />
         <option value="$PROJECT_DIR$/manager/apis/__init__.py" />
         <option value="$PROJECT_DIR$/manager/apis/resources.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1894" />
     <option name="y" value="-22" />
     <option name="width" value="1613" />
@@ -106,12 +167,6 @@
               <item name="manager-backend" type="b2602c69:ProjectViewProjectNode" />
               <item name="manager-backend" type="462c0819:PsiDirectoryNode" />
               <item name="manager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manager-backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manager-backend" type="462c0819:PsiDirectoryNode" />
-              <item name="manager" type="462c0819:PsiDirectoryNode" />
-              <item name="apis" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="manager-backend" type="b2602c69:ProjectViewProjectNode" />
@@ -185,12 +240,12 @@
       <workItem from="1547698877794" duration="10072000" />
       <workItem from="1547789324202" duration="13362000" />
       <workItem from="1547873247363" duration="13526000" />
-      <workItem from="1547952073309" duration="12978000" />
+      <workItem from="1547952073309" duration="15210000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56080000" />
+    <option name="totallyTimeSpent" value="58312000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -203,14 +258,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892473" visible="true" weight="0.33868894" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49892473" visible="true" weight="0.26542416" />
       <window_info id="Structure" order="1" sideWeight="0.50107527" side_tool="true" weight="0.33868894" />
       <window_info id="Favorites" order="2" sideWeight="0.50107527" side_tool="true" weight="0.33868894" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.28301886" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.7722372" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.56873316" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286334" />
@@ -218,7 +274,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3290653" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.88005394" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.2722372" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.20932755" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -232,6 +288,17 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="Pipfile" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/manager/apis/resources.py</url>
+          <line>131</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Pipfile.lock">
@@ -310,13 +377,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manager/static/image/de040eba-1c67-11e9-a2d7-f48e38f2dd5c12.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -366,12 +426,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/apis/resources.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="109" column="23" selection-start-line="109" selection-start-column="23" selection-end-line="109" selection-end-column="23" />
+        <state relative-caret-position="11">
+          <caret line="143" selection-start-line="143" selection-end-line="143" />
           <folding>
             <element signature="e#25#40#0" expanded="true" />
-            <marker date="1547964939022" expanded="true" signature="468:473" ph="..." />
+            <marker date="1547970913366" expanded="true" signature="468:473" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="105" column="21" lean-forward="true" selection-start-line="105" selection-start-column="21" selection-end-line="105" selection-end-column="21" />
         </state>
       </provider>
     </entry>
