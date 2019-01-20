@@ -13,7 +13,11 @@ class Root(db.Model):
     image = db.relationship('Image', back_populates='root')
     jisuanke_update_time = db.Column(db.DateTime, default=datetime.now)
     codeforces_update_time = db.Column(db.DateTime, default=datetime.now)
-    # 另加各种更新的时间
+    jisuanke_update_interval = db.Column(db.Integer, default=3 * 60 * 60)  # 计蒜客爬虫更新时间间隔(单位s)
+    codeforces_update_interval = db.Column(db.Integer, default=3 * 60 * 60)  # Codeforces爬虫更新时间间隔
+    vjudge_update_interval = db.Column(db.Integer, default=24 * 60 * 60)  # vjudge爬虫更新时间间隔
+    wait_time = db.Column(db.Integer, default=10)  # 爬虫爬取失败等待时间
+    try_time = db.Column(db.Integer, default=10)  # 爬虫重试次数
 
 
 class Image(db.Model):

@@ -61,8 +61,8 @@ def update_code_forces():
 
     for tr in trs:
         tds = tr.find_all('td')
-        contest = tds[0].string.strip()
-        writer = tds[1].string.strip()
+        contest = tds[0].text.replace('\n', '').replace(' ', '').replace('\r', '')
+        writer = tds[1].text.strip()
         begin_time = tds[2].span.string.strip()
         url = tds[2].a.attrs.get('href')
         time = tds[3].string.strip()
@@ -75,3 +75,4 @@ def update_code_forces():
     db.session.commit()
 
     return 'OK', r.status_code
+

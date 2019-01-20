@@ -2,51 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90ac512a-8c97-4788-95a2-01f36c3b2926" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/manager-backend.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/apis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/apis/auth.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/apis/error.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/apis/resources.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/apis/schemas.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/crawler/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/crawler/crawlers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/extensions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/fakes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/16c7791c-1c71-11e9-b665-f48e38f2dd5c10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/1ddd254c-1c71-11e9-94f9-f48e38f2dd5c19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/21efc828-1c71-11e9-9cb1-f48e38f2dd5c19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/4430b064-1c79-11e9-bbdc-f48e38f2dd5c2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/773b956c-1c6f-11e9-8cc7-f48e38f2dd5c0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/8a6287e4-1c74-11e9-bb33-f48e38f2dd5c1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/b01d411a-1c7e-11e9-8caa-f48e38f2dd5c95.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/b2165ddc-1c7e-11e9-8a1f-f48e38f2dd5c87.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/b38a7a12-1c7d-11e9-91ea-f48e38f2dd5c1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/b3d6bbe6-1c7e-11e9-896e-f48e38f2dd5c15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/b5ef8c6c-1c7e-11e9-8556-f48e38f2dd5c119.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/b76f12cc-1c7d-11e9-af8d-f48e38f2dd5c20.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/b963efb4-1c7d-11e9-a63d-f48e38f2dd5c17.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/bb77d864-1c7d-11e9-8857-f48e38f2dd5c51.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/bdc66f38-1c7d-11e9-b1a7-f48e38f2dd5c28.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/be5b49e6-1c7e-11e9-a029-f48e38f2dd5c90.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/c0d9f3b0-1c7e-11e9-af03-f48e38f2dd5c77.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/c5420106-1c7e-11e9-90fc-f48e38f2dd5c148.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/static/image/d0defdf0-1c7e-11e9-8686-f48e38f2dd5c27.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/utils.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crawler_manager/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crawler_manager/setting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/apis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager/apis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/apis/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager/apis/resources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/crawler/crawlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager/crawler/crawlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager/models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +18,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/manager_backend$manager.coverage" NAME="manager Coverage Results" MODIFIED="1547970913534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/manager_backend$app.coverage" NAME="app Coverage Results" MODIFIED="1547990999776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/manager_backend$manager.coverage" NAME="manager Coverage Results" MODIFIED="1547990928921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/manager_backend$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1547983243557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/crawler_manager" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -90,21 +55,105 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manager/apis/resources.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11">
-              <caret line="143" selection-start-line="143" selection-end-line="143" />
+            <state relative-caret-position="384">
+              <caret line="182" column="68" selection-start-line="182" selection-start-column="68" selection-end-line="182" selection-end-column="68" />
               <folding>
                 <element signature="e#25#40#0" expanded="true" />
-                <marker date="1547970913366" expanded="true" signature="468:473" ph="..." />
+                <marker date="1547990965662" expanded="true" signature="520:525" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/crawler_manager/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="105" column="21" lean-forward="true" selection-start-line="105" selection-start-column="21" selection-end-line="105" selection-end-column="21" />
+            <state relative-caret-position="242">
+              <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+              <folding>
+                <element signature="e#25#154#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manager/apis/schemas.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="388">
+              <caret line="36" column="12" lean-forward="true" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+              <folding>
+                <element signature="e#25#41#0" expanded="true" />
+                <marker date="1547983732357" expanded="true" signature="381:479" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manager/crawler/__init__.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manager/crawler/crawlers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="69" column="34" lean-forward="true" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+              <folding>
+                <element signature="e#24#51#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.virtualenvs/manager-backend-kbwNXs1-/Lib/site-packages/flask/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="1798" selection-start-line="1798" selection-end-line="1798" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/crawler_manager/setting.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manager/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="19" column="58" lean-forward="true" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="58" />
+              <folding>
+                <element signature="e#25#58#0" expanded="true" />
+                <marker date="1547990839603" expanded="true" signature="1228:1233" ph="..." />
+                <marker date="1547990839603" expanded="true" signature="2147:2896" ph="..." />
+                <marker date="1547990839603" expanded="true" signature="2920:2925" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manager/apis/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -121,6 +170,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/crawler_manager/__init__.py" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -132,20 +184,23 @@
         <option value="$PROJECT_DIR$/manager/apis/schemas.py" />
         <option value="$PROJECT_DIR$/manager/fakes.py" />
         <option value="$PROJECT_DIR$/manager/__init__.py" />
-        <option value="$PROJECT_DIR$/manager/models.py" />
-        <option value="$PROJECT_DIR$/manager/crawler/crawlers.py" />
         <option value="$PROJECT_DIR$/manager/settings.py" />
-        <option value="$PROJECT_DIR$/manager/apis/__init__.py" />
-        <option value="$PROJECT_DIR$/manager/apis/resources.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/manager/crawler/crawlers.py" />
+        <option value="$PROJECT_DIR$/manager/apis/__init__.py" />
+        <option value="$PROJECT_DIR$/manager/models.py" />
+        <option value="$PROJECT_DIR$/manager/apis/resources.py" />
+        <option value="$PROJECT_DIR$/crawler_manager/setting.py" />
+        <option value="$PROJECT_DIR$/crawler_manager/__init__.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1894" />
-    <option name="y" value="-22" />
-    <option name="width" value="1613" />
-    <option name="height" value="906" />
+    <option name="x" value="56" />
+    <option name="y" value="-18" />
+    <option name="width" value="1344" />
+    <option name="height" value="749" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -166,20 +221,18 @@
             <path>
               <item name="manager-backend" type="b2602c69:ProjectViewProjectNode" />
               <item name="manager-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="crawler_manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager-backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager-backend" type="462c0819:PsiDirectoryNode" />
               <item name="manager" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="manager-backend" type="b2602c69:ProjectViewProjectNode" />
               <item name="manager-backend" type="462c0819:PsiDirectoryNode" />
               <item name="manager" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manager-backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manager-backend" type="462c0819:PsiDirectoryNode" />
-              <item name="manager" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="image" type="462c0819:PsiDirectoryNode" />
+              <item name="apis" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -207,7 +260,51 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.app">
+    <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="manager-backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/crawler_manager" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/crawler_manager/__init__.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="manager-backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="manager" type="Python.FlaskServer" factoryName="Flask server">
       <option name="flaskDebug" value="true" />
       <module name="manager-backend" />
@@ -224,6 +321,12 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.app" />
+        <item itemvalue="Python.__init__" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -240,12 +343,12 @@
       <workItem from="1547698877794" duration="10072000" />
       <workItem from="1547789324202" duration="13362000" />
       <workItem from="1547873247363" duration="13526000" />
-      <workItem from="1547952073309" duration="15210000" />
+      <workItem from="1547952073309" duration="27384000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58312000" />
+    <option name="totallyTimeSpent" value="70486000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -257,25 +360,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49892473" visible="true" weight="0.26542416" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892473" weight="0.16577825" />
       <window_info id="Structure" order="1" sideWeight="0.50107527" side_tool="true" weight="0.33868894" />
       <window_info id="Favorites" order="2" sideWeight="0.50107527" side_tool="true" weight="0.33868894" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.28301886" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.56873316" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.6846361" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.24295011" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286334" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3290653" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.2722372" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.20932755" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3286334" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.28633407" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.43261456" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -289,17 +392,6 @@
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="Pipfile" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/manager/apis/resources.py</url>
-          <line>131</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Pipfile.lock">
       <provider selected="true" editor-type-id="text-editor" />
@@ -312,16 +404,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/utils.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manager/apis/schemas.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="36" column="12" lean-forward="true" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manager/crawler/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/fakes.py">
@@ -345,16 +427,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manager/crawler/crawlers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="42" column="30" lean-forward="true" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
-          <folding>
-            <element signature="e#24#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manager/apis/error.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -363,16 +435,6 @@
             <element signature="e#25#50#0" expanded="true" />
             <marker date="1547605553315" expanded="true" signature="141:142" ph="..." />
             <marker date="1547605553315" expanded="true" signature="141:146" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manager/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="13" column="45" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="45" />
-          <folding>
-            <element signature="e#25#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -387,33 +449,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manager/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="12" column="9" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="9" />
-          <folding>
-            <element signature="e#25#58#0" expanded="true" />
-            <marker date="1547800107969" expanded="true" signature="838:843" ph="..." />
-            <marker date="1547800107969" expanded="true" signature="1757:2506" ph="..." />
-            <marker date="1547800107969" expanded="true" signature="2530:2535" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/manager-backend-kbwNXs1-/Lib/site-packages/flask/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="157" column="36" selection-start-line="157" selection-start-column="36" selection-end-line="157" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manager/apis/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manager/extensions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
@@ -424,21 +459,113 @@
     <entry file="file://$PROJECT_DIR$/manager/static/image/1ddd254c-1c71-11e9-94f9-f48e38f2dd5c19.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/manager/apis/resources.py">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11">
-          <caret line="143" selection-start-line="143" selection-end-line="143" />
+        <state relative-caret-position="191">
+          <caret line="105" column="21" lean-forward="true" selection-start-line="105" selection-start-column="21" selection-end-line="105" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manager/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
           <folding>
-            <element signature="e#25#40#0" expanded="true" />
-            <marker date="1547970913366" expanded="true" signature="468:473" ph="..." />
+            <element signature="e#25#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$USER_HOME$/.virtualenvs/manager-backend-kbwNXs1-/Lib/site-packages/flask/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="105" column="21" lean-forward="true" selection-start-line="105" selection-start-column="21" selection-end-line="105" selection-end-column="21" />
+        <state relative-caret-position="297">
+          <caret line="157" selection-start-line="157" selection-end-line="157" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manager/crawler/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/manager-backend-kbwNXs1-/Lib/site-packages/flask/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="1798" selection-start-line="1798" selection-end-line="1798" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manager/apis/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+          <folding>
+            <element signature="e#25#41#0" expanded="true" />
+            <marker date="1547983732357" expanded="true" signature="381:479" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manager/crawler/crawlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="69" column="34" lean-forward="true" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+          <folding>
+            <element signature="e#24#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manager/apis/schemas.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="36" column="12" lean-forward="true" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manager/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" column="58" lean-forward="true" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="58" />
+          <folding>
+            <element signature="e#25#58#0" expanded="true" />
+            <marker date="1547990839603" expanded="true" signature="1228:1233" ph="..." />
+            <marker date="1547990839603" expanded="true" signature="2147:2896" ph="..." />
+            <marker date="1547990839603" expanded="true" signature="2920:2925" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crawler_manager/setting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manager/apis/resources.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="182" column="68" selection-start-line="182" selection-start-column="68" selection-end-line="182" selection-end-column="68" />
+          <folding>
+            <element signature="e#25#40#0" expanded="true" />
+            <marker date="1547990965662" expanded="true" signature="520:525" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crawler_manager/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+          <folding>
+            <element signature="e#25#154#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

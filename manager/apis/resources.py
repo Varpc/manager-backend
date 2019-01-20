@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import uuid, os
+from crawler_manager import change_update_callback
+
 from flask import jsonify, request, current_app
 from flask.views import MethodView
 
@@ -172,3 +174,33 @@ class CodeforcesApi(MethodView):
             time = root.codeforces_update_time.strftime('%Y-%m-%d %H:%M:%S')
         return jsonify(data=data, time=time)
 
+
+class UpdateTimeIntervalApi(MethodView):
+    def get(self):
+        root = Root.query.first()
+        change_update_callback(jisuanke=root.jisuanke_update_interval, codeforces=root.codeforces_update_interval,
+                               vjudge=root.vjudge_update_interval, wait_time=root.wait_time, try_time=root.try_time)
+        return jsonify(jisuanke=root.jisuanke_update_interval, codeforces=root.codeforces_update_interval,
+                               vjudge=root.vjudge_update_interval, wait_time=root.wait_time, try_time=root.try_time)
+
+    def post(self):
+        data = request.get_json()
+        if data is None:
+            return api_abort(400)
+        jisuanke_interval = data.get('jisuanke')
+        codeforces_interval = data.get('codeforces')
+        vjudge_interval = data.get('vjudge')
+        wait_time = data.get('wait_time')
+        try_time = data.get('try_time')
+        if not jisuanke_interval or not codeforces_interval or not vjudge_interval or not wait_time or not try_time:
+            return api_abort(400)
+        root = Root.query.first()
+        root.jisuanke_update_interval = jisuanke_interval
+        root.codeforces_update_interval = codeforces_interval
+        root.vjudge_update_interval = vjudge_interval
+        root.wait_time = wait_time
+        root.try_time = try_time
+        db.session.commit()
+        change_update_callback(jisuanke=jisuanke_interval, codeforces=codeforces_interval, vjudge=vjudge_interval,
+                               wait_time=wait_time, try_time=try_time)
+        return 'OK', 200
