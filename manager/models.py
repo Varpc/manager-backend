@@ -7,6 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from manager.settings import BaseConfig
 
 
+# 基本配置表
 class Root(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     board = db.Column(db.Text)  # 首页公告板内容
@@ -20,6 +21,7 @@ class Root(db.Model):
     try_time = db.Column(db.Integer, default=10)  # 爬虫重试次数
 
 
+# 首页图片表
 class Image(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(256), default=BaseConfig.DEFAULT_HOME_IMAGE_URI)
@@ -27,6 +29,7 @@ class Image(db.Model):
     root = db.relationship('Root', back_populates='image')
 
 
+# 用户信息表
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable=False)
@@ -42,6 +45,7 @@ class User(db.Model):
     group = db.relationship('Group', back_populates='member')
     #
     problems = db.relationship('Problems', back_populates='user', uselist=False)
+    post = db.relationship('Post', back_populates='user')
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -50,6 +54,18 @@ class User(db.Model):
         return check_password_hash(self.password_hash, password)
 
 
+# 文章表
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.Text, nullable=False)
+    body = db.Column(db.Text, nullable=False)
+    author = db.Column(db.String(200))
+    timestamp = db.Column(db.DateTime, default=datetime.now)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship('User', back_populates='post')
+
+
+# 刷题统计表
 class Problems(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable=False)

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from manager.models import Problems, User, JiSuanKe, Codeforces
+from manager.models import Problems, User, JiSuanKe, Codeforces, Post
 
 
 def problems_schema(problems: Problems):
@@ -30,6 +30,20 @@ def user_schema(user: User):
         'is_admin': user.is_admin,
         'vjid': user.vjid
     }
+
+
+# 为提高加载速度，文章内容通过need_body按需提供
+def post_schema(post: Post, need_body=True):
+    item = {
+        'post_id': post.id,
+        'user_id': post.user_id,
+        'title': post.title,
+        'author': post.author,
+        'time': post.timestamp.strftime('%Y-%m-%d %H:%M:%S'),
+    }
+    if need_body:
+        item['body'] = post.body
+    return item
 
 
 # 格式化近期比赛数据

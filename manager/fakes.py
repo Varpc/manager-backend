@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from manager.extensions import db
-from manager.models import User, Problems, Root
+from manager.models import User, Problems, Root, Post
 from sqlalchemy.exc import IntegrityError
 from faker import Faker
 import random
@@ -46,3 +46,16 @@ def user_fake():
             db.session.commit()
         except IntegrityError:
             db.session.rollback()
+
+
+def post_fake():
+    for i in range(50):
+        post = Post(
+            title=fake.sentence(),
+            body=fake.text(2000),
+            author=fake.name(),
+            user=User.query.get(random.randint(1, User.query.count())),
+            timestamp=fake.date_time_this_year()
+        )
+        db.session.add(post)
+    db.session.commit()
