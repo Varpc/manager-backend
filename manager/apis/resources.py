@@ -22,6 +22,65 @@ class ProblemsApi(MethodView):
         return jsonify(data=data)
 
 
+# 返回指定用户的题目列表
+class ProblemApi(MethodView):
+    def get(self, user_id):
+        problem = User.query.get_or_404(user_id).problems
+        return jsonify(problems_schema(problem, need_last_days=True))
+
+
+# 返回某个特定用于的信息，用户信息修改
+class UserApi(MethodView):
+    def get(self, id):
+        user = User.query.get_or_404(id)
+        return jsonify(user_schema(user))
+
+    def post(self, id):
+        user = User.query.get_or_404(id)
+        data = request.get_json()
+        name = data.get('name')
+        class_ = data.get('banji')
+        vjid = data.get('vjid')
+        if name is None or class_ is None or vjid is None:
+            return api_abort(400)
+        user.name = name
+        user.class_ = class_
+        user.vjid = vjid
+        if data.get('blog'):
+            user.blog = data.get('blog')
+        if data.get('codeforces'):
+            user.codeforces = data.get('codeforces')
+        if data.get('password'):
+            user.set_password(data.get('password'))
+
+        db.session.commit()
+        return api_abort(200)
+
+
+# 用户头像修改api
+class HeadImageApi(MethodView):
+    def post(self, id):
+        file = request.files['file']
+        if file:
+            # 获取新头像
+            filename = str(uuid.uuid1()) + file.filename
+            filepath = os.path.join(current_app.config['IMAGE_DIR'], filename)
+            file.save(filepath)
+            image_url = current_app.config['IMAGE_DIR_SUFFIX'] + filename
+
+            user = User.query.get_or_404(id)
+            if user.image != current_app.config['DEFAULT_HEAD_IMAGE_URI']:
+                old_filename = user.image.split('/')[-1:][0]
+                os.chdir(current_app.config['IMAGE_DIR'])
+                if os.path.exists(old_filename):
+                    os.remove(old_filename)
+
+            user.image = image_url
+            db.session.commit()
+            return jsonify(code="0", imgURL=image_url, downloadURL=image_url)
+        return api_abort(400)
+
+
 class AuthTokenApi(MethodView):
     def post(self):
         data = request.get_json()
@@ -190,7 +249,6 @@ class HomeImageApi(MethodView):
             return api_abort(400)
         filename = image_url.split('/')[-1:][0]
         filepath = current_app.config['IMAGE_DIR']
-        print(filename)
         os.chdir(filepath)
         if os.path.exists(filename):
             os.remove(filename)
@@ -202,7 +260,7 @@ class HomeImageApi(MethodView):
 
 
 # 近期比赛api
-class JisuankeApi(MethodView):
+class JisuankeApi(MethodView):  # noqa
     def get(self):
         jsk = JiSuanKe.query.all()
         data = []

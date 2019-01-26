@@ -17,7 +17,7 @@ class BaseConfig(object):
 
     IMAGE_DIR = image_dir
     IMAGE_DIR_SUFFIX = image_dir_suffix
-    DEFAULT_HEAD_IMAGE_URI = '/static/image/default.png'
+    DEFAULT_HEAD_IMAGE_URI = '/static/image/1.jpg'
     DEFAULT_HOME_IMAGE_URI = '/static/image/default-home.png'
 
 

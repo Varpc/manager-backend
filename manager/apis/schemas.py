@@ -2,11 +2,11 @@
 from manager.models import Problems, User, JiSuanKe, Codeforces, Post
 
 
-def problems_schema(problems: Problems):
-    return {
+# 为提高加载速度, 指定need_last_days，最近三十天记录按需提供
+def problems_schema(problems: Problems, need_last_days=False):
+    user = problems.user
+    item = {
         'id': problems.id,
-        'name': problems.name,
-        'banji': problems.class_,
         'count': problems.count,
         'blue_book': problems.blue_book,
         'purple_book': problems.purple_book,
@@ -16,8 +16,22 @@ def problems_schema(problems: Problems):
         'poj': problems.poj,
         'cf': problems.cf,
         'bc': problems.bc,
-        'status': problems.status
+        'user': {
+            'user_id': user.id,
+            'name': user.name,
+            'banji': user.class_,
+            'status': user.status,
+        }
     }
+
+    if need_last_days:
+        last_days = problems.last_days.split(' ')
+        last_days_data = []
+        for i in last_days:
+            last_days_data.append(eval(i))
+        item['last_days'] = last_days_data
+
+    return item
 
 
 def user_schema(user: User):
@@ -28,7 +42,10 @@ def user_schema(user: User):
         'image': user.image,
         'username': user.username,
         'is_admin': user.is_admin,
-        'vjid': user.vjid
+        'vjid': user.vjid,
+        'codeforces': user.codeforces,
+        'status': user.status,
+        'blog': user.blog
     }
 
 

@@ -20,8 +20,10 @@ def root_fake():
 def user_fake():
     admin = User(name='admin', class_="计算机学院", username='username', is_admin=True)
     admin.set_password('password')
-
+    problems = Problems()
+    admin.problems = problems
     db.session.add(admin)
+    db.session.add(problems)
     db.session.commit()
 
     length = len(classes)
@@ -30,15 +32,19 @@ def user_fake():
         name = fake.name()
         index = int(random.random() * length)
         class_ = classes[index]
-        image = r'E:\manager-backend\image\1.jpeg'
-        user = User(name=name, class_=class_, image=image, username=fake.user_name(), is_admin=False,
-                    vjid=fake.user_name())
+        user = User(name=name, class_=class_, username=fake.user_name(), is_admin=False,
+                    vjid=fake.user_name(), status=random.randint(0, 3))
         user.set_password('1234')
 
-        problems = Problems(name=name, class_=class_, count=fake.random_int(), blue_book=fake.random_int(),
-                            purple_book=fake.random_int(), sum=fake.random_int(), uva=fake.random_int(),
-                            hdu=fake.random_int(), poj=fake.random_int(), cf=fake.random_int(), bc=fake.random_int(),
-                            status=int(random.random() * 4))
+        problems = Problems(blue_book=random.randint(1, 100), purple_book=random.randint(100, 200),
+                            uva=random.randint(100, 300), hdu=random.randint(1, 200), poj=random.randint(1, 200),
+                            cf=random.randint(1000, 3000), bc=random.randint(1000, 3000), )
+        problems.sum = problems.blue_book + problems.purple_book
+        problems.count = problems.uva + problems.hdu + problems.poj
+        problems.last_days = ""
+        for i in range(0, 30):
+            problems.last_days = problems.last_days + str(random.randint(0, 7)) + " "
+        problems.last_days = problems.last_days.strip()
         try:
             user.problems = problems
             db.session.add(user)

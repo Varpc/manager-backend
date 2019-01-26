@@ -36,9 +36,12 @@ class User(db.Model):
     class_ = db.Column(db.String(200), nullable=False)  # 加下划线与关键字不重复
     image = db.Column(db.String(256), default=BaseConfig.DEFAULT_HEAD_IMAGE_URI)
     username = db.Column(db.String(256), nullable=False, unique=True)
+    status = db.Column(db.Integer, default=0)  # 0审核 1现役 2退役 3除名
     password_hash = db.Column(db.String(256))
     is_admin = db.Column(db.Boolean, default=False)
     vjid = db.Column(db.String(200))
+    codeforces = db.Column(db.String(200))
+    blog = db.Column(db.String(256))
 
     # 外键
     group_id = db.Column(db.Integer, db.ForeignKey('group.id'))
@@ -68,8 +71,6 @@ class Post(db.Model):
 # 刷题统计表
 class Problems(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(200), nullable=False)
-    class_ = db.Column(db.String(200), nullable=False)
     count = db.Column(db.Integer, default=0)
     blue_book = db.Column(db.Integer, default=0)
     purple_book = db.Column(db.Integer, default=0)
@@ -79,7 +80,7 @@ class Problems(db.Model):
     poj = db.Column(db.Integer, default=0)
     cf = db.Column(db.Integer, default=0)
     bc = db.Column(db.Integer, default=0)
-    status = db.Column(db.Integer, default=0)  # 0审核 1现役 2退役 3除名
+    last_days = db.Column(db.String(1000), default=('0 '*30).strip())
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User', back_populates='problems')
