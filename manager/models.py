@@ -64,6 +64,7 @@ class Post(db.Model):
     body = db.Column(db.Text, nullable=False)
     author = db.Column(db.String(200))
     timestamp = db.Column(db.DateTime, default=datetime.now)
+    need_edit = db.Column(db.Boolean, default=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User', back_populates='post')
 
@@ -90,6 +91,7 @@ class Group(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable=False)
     no = db.Column(db.String(200), unique=True, index=True)
+    score = db.Column(db.Float, default=0.0)
     member = db.relationship('User', back_populates='group')
 
 

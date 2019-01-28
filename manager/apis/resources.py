@@ -6,11 +6,12 @@ from crawler_manager import change_update_callback
 from flask import jsonify, request, current_app
 from flask.views import MethodView
 
-from manager.apis.schemas import problems_schema, user_schema, jisuanke_schema, codeforces_schema, post_schema
+from manager.apis.schemas import problems_schema, user_schema, jisuanke_schema, codeforces_schema, post_schema, \
+    group_schema
 from manager.apis.error import api_abort
 from manager.apis.auth import generate_token, validate_token
 from manager.extensions import db
-from manager.models import User, Problems, JiSuanKe, Codeforces, Root, Image, Post
+from manager.models import User, Problems, JiSuanKe, Codeforces, Root, Image, Post, Group
 
 
 class ProblemsApi(MethodView):
@@ -55,6 +56,15 @@ class UserApi(MethodView):
 
         db.session.commit()
         return api_abort(200)
+
+
+class GroupsApi(MethodView):
+    def get(self):
+        groups = Group.query.order_by(Group.score.desc()).all()
+        data = []
+        for item in groups:
+            data.append(group_schema(item))
+        return jsonify(data=data)
 
 
 # 用户头像修改api
@@ -130,57 +140,6 @@ class RegisterApi(MethodView):
         db.session.commit()
 
         return jsonify(user_schema(user))
-
-
-# 用于文章的api
-
-# 返回所有文章
-class PostsApi(MethodView):
-    def get(self):
-        posts = Post.query.order_by(Post.timestamp.desc()).all()
-        data = []
-        for item in posts:
-            data.append(post_schema(item, need_body=False))
-        return jsonify(data=data)
-
-
-# 返回指定文章和创建删除文章
-class PostApi(MethodView):
-    def get(self, id):
-        post = Post.query.get_or_404(id)
-        return jsonify(post_schema(post))
-
-    def post(self):
-        data = request.get_json()
-        title = data.get('title')
-        body = data.get('body')
-        author = data.get('author')
-        user_id = data.get('user_id')
-        if not title or not body or not author or not user_id:
-            return api_abort(400)
-        user = User.query.get_or_404(user_id)
-        post = Post(title=title, body=body, author=author)
-        post.user = user
-        db.session.add(post)
-        db.session.commit()
-        return api_abort(200)
-
-    def delete(self, id):
-        post = Post.query.get_or_404(id)
-        db.session.delete(post)
-        db.session.commit()
-        return api_abort(200)
-
-
-# 返回指定用户的文章
-class UserPostApi(MethodView):
-    def get(self, id):
-        user = User.query.get_or_404(id)
-        posts = Post.query.with_parent(user).order_by(Post.timestamp.desc()).all()
-        data = []
-        for item in posts:
-            data.append(post_schema(item, need_body=False))
-        return jsonify(data=data)
 
 
 # 首页公告提交

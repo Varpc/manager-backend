@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from manager.apis.resources import ProblemsApi, UserApi, AuthTokenApi, RegisterApi, JisuankeApi, CodeforcesApi, \
-    BoardApi, HeadImageApi, \
-    EditerMediaApi, HomeImageApi, UpdateTimeIntervalApi, PostApi, PostsApi, UserPostApi, ProblemApi
+    BoardApi, HeadImageApi, GroupsApi, \
+    EditerMediaApi, HomeImageApi, UpdateTimeIntervalApi, ProblemApi
+
+from manager.apis.post_api import PostApi, PostsApi, UserPostApi
 
 from flask import Blueprint
 
@@ -16,10 +18,14 @@ apis.add_url_rule('/register', view_func=RegisterApi.as_view('register_api'), me
 
 apis.add_url_rule('/user/<int:id>', view_func=UserApi.as_view('user_api'), methods=['GET', 'POST'])
 apis.add_url_rule('/user/<int:id>/image', view_func=HeadImageApi.as_view('head_image_api'), methods=['POST'])
+apis.add_url_rule('/groups', view_func=GroupsApi.as_view('groups_api'), methods=['GET'])
 
 apis.add_url_rule('/posts', view_func=PostsApi.as_view('posts_api'), methods=['GET'])  # 返回所有文章
-apis.add_url_rule('/post/<int:id>', view_func=PostApi.as_view('post_api'), methods=['GET', 'DELETE'])  # 返回指定的文章
+
+# 对指定的文章进行操作: 获取指定文章 删除文章 修改文章
+apis.add_url_rule('/post/<int:post_id>', view_func=PostApi.as_view('post_api'), methods=['GET', 'DELETE', 'PUT'])
 apis.add_url_rule('/post', view_func=PostApi.as_view('post_create_api'), methods=['POST'])  # 创建一个文章
+
 apis.add_url_rule('/user/<int:id>/posts', view_func=UserPostApi.as_view('user_posts_apo'), methods=['GET'])  # 返回一个用
 # 户的所有文章
 

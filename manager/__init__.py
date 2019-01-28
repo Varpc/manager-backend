@@ -39,7 +39,7 @@ def register_blueprint(app: Flask):
 def register_commands(app: Flask):
     @app.cli.command()
     def forge():
-        from manager.fakes import root_fake, user_fake, post_fake
+        from manager.fakes import root_fake, user_fake, post_fake, group_fake
         click.echo("Drop database")
         db.drop_all()
         click.echo("Create new databases")
@@ -50,6 +50,9 @@ def register_commands(app: Flask):
 
         click.echo('generate user and problems data')
         user_fake()
+
+        click.echo('generate group data')
+        group_fake()
 
         click.echo('generate post data')
         post_fake()

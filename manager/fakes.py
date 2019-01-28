@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from manager.extensions import db
-from manager.models import User, Problems, Root, Post
+from manager.models import User, Problems, Root, Post, Group
 from sqlalchemy.exc import IntegrityError
 from faker import Faker
 import random
@@ -64,4 +64,14 @@ def post_fake():
             timestamp=fake.date_time_this_year()
         )
         db.session.add(post)
+    db.session.commit()
+
+
+def group_fake():
+    for i in range(1, 20):
+        group = Group(name=fake.word() + "号", no='uss_' + str(random.randint(1000, 100000)), score=random.randint(10, 30))
+        group.member.append(User.query.get(i * 3))
+        group.member.append(User.query.get(i * 3 + 1))
+        group.member.append(User.query.get(i * 3 + 2))
+        db.session.add(group)
     db.session.commit()

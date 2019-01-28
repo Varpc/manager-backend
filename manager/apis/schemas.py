@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from manager.models import Problems, User, JiSuanKe, Codeforces, Post
+from manager.models import Problems, User, JiSuanKe, Codeforces, Post, Group
 
 
 # 为提高加载速度, 指定need_last_days，最近三十天记录按需提供
@@ -49,6 +49,20 @@ def user_schema(user: User):
     }
 
 
+def group_schema(group: Group):
+    user = []
+    for item in group.member:
+        user.append(user_schema(item))
+
+    return {
+        'group_id': group.id,
+        'name': group.name,
+        'no': group.no,
+        'score': group.score,
+        'user': user,
+    }
+
+
 # 为提高加载速度，文章内容通过need_body按需提供
 def post_schema(post: Post, need_body=True):
     item = {
@@ -56,6 +70,7 @@ def post_schema(post: Post, need_body=True):
         'user_id': post.user_id,
         'title': post.title,
         'author': post.author,
+        'need_edit': post.need_edit,
         'time': post.timestamp.strftime('%Y-%m-%d %H:%M:%S'),
     }
     if need_body:
