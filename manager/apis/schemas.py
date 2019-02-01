@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from manager.models import Problems, User, JiSuanKe, Codeforces, Post, Group
+from manager.models import Problems, User, JiSuanKe, Codeforces, Post, Group, Root
 
 
 # 为提高加载速度, 指定need_last_days，最近三十天记录按需提供
@@ -76,6 +76,16 @@ def post_schema(post: Post, need_body=True):
     if need_body:
         item['body'] = post.body
     return item
+
+
+# 用于格式化root中的设置
+def config_schema(root: Root):
+    return {
+        'jisuanke_update_interval': root.jisuanke_update_interval,
+        'codeforces_update_interval': root.codeforces_update_interval,
+        'wait_time': root.wait_time,
+        'try_time': root.try_time,
+    }
 
 
 # 格式化近期比赛数据

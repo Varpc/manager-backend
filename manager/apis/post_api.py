@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import jsonify, request, current_app
+from flask import jsonify, request
 from flask.views import MethodView
 from manager.apis.error import api_abort
 from manager.apis.schemas import post_schema
@@ -13,8 +13,8 @@ from datetime import datetime
 """
 
 
-# 返回所有文章
 class PostsApi(MethodView):
+    """返回所有的文章"""
     def get(self):
         posts = Post.query.order_by(Post.timestamp.desc()).all()
         data = []
@@ -25,7 +25,7 @@ class PostsApi(MethodView):
 
 class PostApi(MethodView):
     """
-    对一个进行操作的api，post方法用于创建一个文章
+    对一个文章进行操作的api，post方法用于创建一个文章
     除post方法外，其他三个方法需通过post_id来指定所要
     操作的文章的id,分别对文章进行获取，修改，删除操作
     """
@@ -72,9 +72,13 @@ class PostApi(MethodView):
         return api_abort(200)
 
 
-# 返回指定用户的文章
 class UserPostApi(MethodView):
     def get(self, id):
+        """
+        返回指定用户的文章
+        :param id: 用户id
+        :return:
+        """
         user = User.query.get_or_404(id)
         posts = Post.query.with_parent(user).order_by(Post.timestamp.desc()).all()
         data = []

@@ -11,7 +11,7 @@ from manager.apis.schemas import problems_schema, user_schema, jisuanke_schema, 
 from manager.apis.error import api_abort
 from manager.apis.auth import generate_token, validate_token
 from manager.extensions import db
-from manager.models import User, Problems, JiSuanKe, Codeforces, Root, Image, Post, Group
+from manager.models import User, Problems, JiSuanKe, Codeforces, Root, Image, Group
 
 
 class ProblemsApi(MethodView):
