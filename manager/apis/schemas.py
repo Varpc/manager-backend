@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 from manager.models import Problems, User, JiSuanKe, Codeforces, Post, Group, Root
 
+"""
+用于格式化数据的工具函数
+"""
+
 
 # 为提高加载速度, 指定need_last_days，最近三十天记录按需提供
 def problems_schema(problems: Problems, need_last_days=False):
