@@ -4,8 +4,8 @@ from flask import jsonify, request, current_app
 from flask.views import MethodView
 from manager.apis.error import api_abort
 from manager.extensions import db
-from manager.models import Post, Root, Image
-from manager.apis.schemas import config_schema
+from manager.models import Post, Root, Image, Group, User
+from manager.apis.schemas import config_schema, group_schema, user_schema
 
 """
 管理员后台的api
@@ -17,7 +17,7 @@ class AdminPosts(MethodView):
 
     def put(self, post_id):
         """
-        设置文章需要修改
+        设置文章为需要修改
         :param post_id: 文章id
         :return:
         """
@@ -86,7 +86,7 @@ class AdminHomeImageApi(MethodView):
             filename = str(uuid.uuid1()) + file.filename
             filepath = os.path.join(current_app.config['IMAGE_DIR'], filename)
             file.save(filepath)
-            image_url = current_app.config['IMAGE_DIR_SUFFIX'] + filename
+            image_url = current_app.config['IMAGE_UIR_PREFIX'] + filename
             root = Root.query.first()
             image = Image(url=image_url)
             root.image.append(image)
@@ -111,4 +111,89 @@ class AdminHomeImageApi(MethodView):
         if image is not None:
             db.session.delete(image)
             db.session.commit()
+        return api_abort(200)
+
+
+class AdminUsers(MethodView):
+    """用户操作所有用户的api"""
+    def get(self):
+        users = User.query.all()
+        data = [user_schema(item) for item in users]
+        return jsonify(data=data)
+
+
+class AdminGroups(MethodView):
+    def get(self):
+        """
+        返回所有的现役队伍的信息
+        :return:
+        """
+        groups = Group.query.filter_by(service=True).all()
+        data = [group_schema(item) for item in groups]
+        return jsonify(data=data)
+
+    def post(self):
+        """
+        创建一个新队伍，首先从请求中获取队伍名称（name），队伍编号（no）和队伍描述（describe 选填），若获取失败或或编号已经被战勇，
+        则返回400错误，否则创建新队伍
+        :return:
+        """
+        data = request.get_json()
+        if not data:
+            return api_abort(400)
+        name = data.get('name')
+        no = data.get('no')
+        describe = data.get('describe')
+        if not name or not no:
+            return api_abort(400)
+        if Group.query.filter_by(no=no).first() is not None:
+            return api_abort(400, "编号已被占用")
+        group = Group(name=name, no=no, describe=describe)
+        db.session.add(group)
+        db.session.commit()
+        return api_abort(200)
+
+    def put(self):
+        """
+        使所有队伍的分数清零
+        :return:
+        """
+        groups = Group.query.filter_by(service=True).all()
+        for item in groups:
+            item.score = 0
+        db.session.commit()
+        return api_abort(200)
+
+
+class AdminGroup(MethodView):
+    def put(self, group_id):
+        """
+        修改队伍id为group_id的队伍的分数。从json中获取要改变的分数的大小（num）和修改的类型（type 类型为"plus"为加分，为"minus"
+        则减分），若获取失败，返回400错误，否则修改相应的分数
+        :param group_id: 队伍的id
+        :return:
+        """
+        data = request.get_json()
+        group = Group.query.get_or_404(group_id)
+        if not data:
+            return api_abort(400)
+        type_ = data.get('type')
+        num = data.get('num')
+        if num is None or type_ is None:  # 此处不可使用not num，否则但num=0时会返回400
+            return api_abort(400)
+        if type_ == "plus":  # 这里不可用is加以判断
+            group.score = group.score + num
+        elif type_ == "minus":
+            group.score = group.score - num
+        db.session.commit()
+        return api_abort(200)
+
+    def delete(self, group_id):
+        """
+        删除id为group_id的队伍
+        :return:
+        """
+        group = Group.query.get_or_404(group_id)
+        db.session.delete(group)
+        db.session.commit()
         return api_abort(200)

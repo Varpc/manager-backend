@@ -11,7 +11,7 @@ from datetime import datetime
 
 
 """
-用于用户操作的api，全部以User-为前缀加以取区分
+用于用户操作的api
 """
 
 
@@ -25,9 +25,7 @@ class UserPostsApi(MethodView):
         """
         user = User.query.get_or_404(user_id)
         posts = Post.query.with_parent(user).order_by(Post.timestamp.desc()).all()
-        data = []
-        for item in posts:
-            data.append(post_schema(item, need_body=False))
+        data = [post_schema(item, need_body=False) for item in posts]
         return jsonify(data=data)
 
 
@@ -164,7 +162,7 @@ class UserHeadImageApi(MethodView):
             filename = str(uuid.uuid1()) + file.filename
             filepath = os.path.join(current_app.config['IMAGE_DIR'], filename)
             file.save(filepath)
-            image_url = current_app.config['IMAGE_DIR_SUFFIX'] + filename
+            image_url = current_app.config['IMAGE_UIR_PREFIX'] + filename
 
             user = User.query.get_or_404(user_id)
             if user.image != current_app.config['DEFAULT_HEAD_IMAGE_URI']:

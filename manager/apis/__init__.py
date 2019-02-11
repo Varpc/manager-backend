@@ -3,7 +3,7 @@
 from manager.apis.resources import ProblemsApi, JisuankeApi, CodeforcesApi, BoardApi, GroupsApi, PostsApi, \
     EditerMediaApi, UpdateTimeIntervalApi
 
-from manager.apis.admin import AdminPosts, AdminConfig, AdminHomeImageApi
+from manager.apis.admin import AdminPosts, AdminConfig, AdminHomeImageApi, AdminUsers, AdminGroups, AdminGroup
 
 from manager.apis.user import UserPostApi, UserPostsApi, UserInfoApi, UserProblemApi, UserHeadImageApi, \
     UserAuthTokenApi, UserRegisterApi
@@ -39,6 +39,12 @@ apis.add_url_rule('/contest/codeforces', view_func=CodeforcesApi.as_view('contes
 apis.add_url_rule('/admin/home/board', view_func=BoardApi.as_view('admin_home_board_api'), methods=['GET', 'POST'])
 apis.add_url_rule('/admin/home/image', view_func=AdminHomeImageApi.as_view('admin_home_image_api'),
                   methods=['GET', 'POST', 'DELETE'])
+
+apis.add_url_rule('/admin/users', view_func=AdminUsers.as_view('admin_users'), methods=['GET'])
+apis.add_url_rule('/admin/group/<int:group_id>', view_func=AdminGroup.as_view('admin_group_group_id'),
+                  methods=['PUT', 'DELETE'])
+apis.add_url_rule('/admin/groups', view_func=AdminGroups.as_view('admin_groups'), methods=['GET', 'POST', 'PUT'])
+
 
 apis.add_url_rule('/media', view_func=EditerMediaApi.as_view('media_api'), methods=['POST'])
 

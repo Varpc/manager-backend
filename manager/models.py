@@ -14,7 +14,6 @@ class Root(db.Model):
     image = db.relationship('Image', back_populates='root')
     jisuanke_update_time = db.Column(db.DateTime, default=datetime.now)
     codeforces_update_time = db.Column(db.DateTime, default=datetime.now)
-
     jisuanke_update_interval = db.Column(db.Integer, default=3 * 60 * 60)  # 计蒜客爬虫更新时间间隔(单位s)
     codeforces_update_interval = db.Column(db.Integer, default=3 * 60 * 60)  # Codeforces爬虫更新时间间隔
     vjudge_update_interval = db.Column(db.Integer, default=24 * 60 * 60)  # vjudge爬虫更新时间间隔
@@ -82,7 +81,7 @@ class Problems(db.Model):
     poj = db.Column(db.Integer, default=0)
     cf = db.Column(db.Integer, default=0)
     bc = db.Column(db.Integer, default=0)
-    last_days = db.Column(db.String(1000), default=('0 '*30).strip())
+    last_days = db.Column(db.String(1000), default=('0 ' * 30).strip())
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User', back_populates='problems')
@@ -93,6 +92,8 @@ class Group(db.Model):
     name = db.Column(db.String(200), nullable=False)
     no = db.Column(db.String(200), unique=True, index=True)
     score = db.Column(db.Float, default=0.0)
+    describe = db.Column(db.Text)
+    service = db.Column(db.Boolean, default=False)
     member = db.relationship('User', back_populates='group')
 
 

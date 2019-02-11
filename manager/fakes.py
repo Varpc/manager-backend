@@ -69,7 +69,8 @@ def post_fake():
 
 def group_fake():
     for i in range(1, 20):
-        group = Group(name=fake.word() + "号", no='uss_' + str(random.randint(1000, 100000)), score=random.randint(10, 30))
+        group = Group(name=fake.word() + "号", no='uss_' + str(random.randint(1000, 100000)),
+                      score=random.randint(10, 30), service=True)
         group.member.append(User.query.get(i * 3))
         group.member.append(User.query.get(i * 3 + 1))
         group.member.append(User.query.get(i * 3 + 2))

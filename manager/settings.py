@@ -7,7 +7,6 @@ image_dir = os.path.abspath(os.path.dirname(__file__)) + image_dir_suffix
 if not os.path.exists(image_dir):
     os.makedirs(image_dir)
 
-
 db_uri = 'mysql+pymysql://root:12345@localhost/manager?charset=utf8'
 
 
@@ -16,9 +15,10 @@ class BaseConfig(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False  # 不追踪对象的修改
 
     IMAGE_DIR = image_dir
-    IMAGE_DIR_SUFFIX = image_dir_suffix
-    DEFAULT_HEAD_IMAGE_URI = '/static/image/1.jpg'
-    DEFAULT_HOME_IMAGE_URI = '/static/image/default-home.png'
+    IMAGE_DIR_SUFFIX = image_dir_suffix  # 相对路径下存储图片的文件夹
+    IMAGE_UIR_PREFIX = '/image/'  # 图片请求时的前缀，即存储图片的文件夹在静态资源文件夹中的位置
+    DEFAULT_HEAD_IMAGE_URI = '/image/1.jpg'
+    DEFAULT_HOME_IMAGE_URI = '/image/default-home.png'
 
 
 class DevelopmentConfig(BaseConfig):

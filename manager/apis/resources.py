@@ -12,14 +12,17 @@ from manager.extensions import db
 from manager.models import Problems, JiSuanKe, Codeforces, Root, Group, Post
 
 
+"""
+这里包括大多数公有资源的api
+"""
+
+
 class ProblemsApi(MethodView):
     """用于获取所有刷题记录的api"""
 
     def get(self):
         problems = Problems.query.all()
-        data = []
-        for item in problems:
-            data.append(problems_schema(item))
+        data = [problems_schema(item) for item in problems]
         return jsonify(data=data)
 
 
@@ -28,9 +31,7 @@ class PostsApi(MethodView):
 
     def get(self):
         posts = Post.query.order_by(Post.timestamp.desc()).all()
-        data = []
-        for item in posts:
-            data.append(post_schema(item, need_body=False))
+        data = [post_schema(item, need_body=False) for item in posts]
         return jsonify(data=data)
 
 
@@ -39,13 +40,10 @@ class GroupsApi(MethodView):
 
     def get(self):
         groups = Group.query.order_by(Group.score.desc()).all()
-        data = []
-        for item in groups:
-            data.append(group_schema(item))
+        data = [group_schema(item) for item in groups]
         return jsonify(data=data)
 
 
-# 首页公告提交
 class BoardApi(MethodView):
     """用于首页公告操作的api"""
 
@@ -91,9 +89,7 @@ class JisuankeApi(MethodView):
 
     def get(self):
         jsk = JiSuanKe.query.all()
-        data = []
-        for item in jsk:
-            data.append(jisuanke_schema(item))
+        data = [jisuanke_schema(item) for item in jsk]
         root = Root.query.first()
         time = root.jisuanke_update_time.strftime('%Y-%m-%d %H:%M:%S')
         return jsonify(data=data, time=time)
@@ -104,9 +100,7 @@ class CodeforcesApi(MethodView):
 
     def get(self):
         codeforces = Codeforces.query.all()
-        data = []
-        for item in codeforces:
-            data.append(codeforces_schema(item))
+        data = [codeforces_schema(item) for item in codeforces]
         root = Root.query.first()
         time = root.codeforces_update_time.strftime('%Y-%m-%d %H:%M:%S')
         return jsonify(data=data, time=time)
