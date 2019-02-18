@@ -9,6 +9,7 @@ flask-sqlalchemy = "*"
 pymysql = "*"
 requests = "*"
 "beautifulsoup4" = "*"
+python-dotenv = "*"
 
 [dev-packages]
 faker = "*"
