@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from manager.models import Problems, User, JiSuanKe, Codeforces, Post, Group, Root
+from manager.models import Problems, User, JiSuanKe, Codeforces, Post, Group, Root, Contest, ContestSeason
 
 """
 用于格式化数据的工具函数
@@ -36,6 +36,39 @@ def problems_schema(problems: Problems, need_last_days=False):
         item['last_days'] = last_days_data
 
     return item
+
+
+def contest_season_schema(contest_season: ContestSeason, only_name=False):
+    if only_name:
+        return {
+            'id': contest_season.id,
+            'name': contest_season.name,
+        }
+    return {
+        'id': contest_season.id,
+        'name': contest_season.name,
+        'begin_time': contest_season.begin_time,
+        'end_time': contest_season.end_time,
+        'rule': contest_season.rule,
+        'creator': contest_season.creator,
+    }
+
+
+def contest_schema(contest: Contest):
+    contest_season = contest.contest_season
+    return {
+        'id': contest.id,
+        'name': contest.name,
+        'type': contest.type,
+        'problem_sum': contest.problem_sum,
+        'penalty': contest.penalty,
+        'data': contest.data,
+        'date': contest.date,
+        'time': contest.time,
+        'length': contest.length,
+        'creator': contest.creator,
+        'contest_season': contest_season_schema(contest_season)
+    }
 
 
 def user_schema(user: User):

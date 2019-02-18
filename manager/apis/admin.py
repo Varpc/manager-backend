@@ -4,8 +4,8 @@ from flask import jsonify, request, current_app
 from flask.views import MethodView
 from manager.apis.error import api_abort
 from manager.extensions import db
-from manager.models import Post, Root, Image, Group, User
-from manager.apis.schemas import config_schema, group_schema, user_schema
+from manager.models import Post, Root, Image, Group, User, Problems, ContestSeason, Contest
+from manager.apis.schemas import config_schema, group_schema, user_schema, contest_season_schema
 
 """
 管理员后台的api
@@ -115,11 +115,48 @@ class AdminHomeImageApi(MethodView):
 
 
 class AdminUsers(MethodView):
-    """用户操作所有用户的api"""
     def get(self):
+        """获取所有的用户数据"""
         users = User.query.all()
         data = [user_schema(item) for item in users]
         return jsonify(data=data)
+
+
+class AdminUser(MethodView):
+    """用于审核用户，退役除名删除队员api"""
+    def put(self, user_id):
+        """
+        改变用户id为user_id的用户状态，如审核->队员，队员->退役
+        :param user_id:
+        :return:
+        """
+        data = request.get_json()
+        if data is None:
+            return api_abort(400)
+        status = data.get('status')
+        if status is None:
+            return api_abort(400)
+        user = User.query.get_or_404(user_id)
+        user.status = status
+        db.session.commit()
+        return api_abort(200)
+
+    def delete(self, user_id):
+        """
+        删除用户id为user_id的用户
+        :param user_id:
+        :return:
+        """
+        user = User.query.get_or_404(user_id)
+        problems = Problems.query.with_parent(user).first()
+        posts = Post.query.with_parent(user).all()
+
+        db.session.delete(user)
+        db.session.delete(problems)
+        for item in posts:
+            db.session.delete(item)
+        db.session.commit()
+        return api_abort(200)
 
 
 class AdminGroups(MethodView):
@@ -197,3 +234,84 @@ class AdminGroup(MethodView):
         db.session.delete(group)
         db.session.commit()
         return api_abort(200)
+
+
+class AdminContestSeasonsApi(MethodView):
+    def get(self):
+        contest_season = ContestSeason.query.all()
+        data = [contest_season_schema(item) for item in contest_season]
+        return jsonify(data=data)
+
+    def post(self):
+        data = request.get_json()
+        if data is None:
+            return api_abort(400)
+        name = data.get('name')
+        begin_time = data.get('beginTime')
+        end_time = data.get('endTime')
+        rule = data.get('rule')
+        if name is None or begin_time is None or end_time is None or rule is None:
+            return api_abort(400)
+        contest_season = ContestSeason(name=name, begin_time=begin_time, end_time=end_time, rule=rule)
+        db.session.add(contest_season)
+        db.session.commit()
+        return api_abort(200)
+
+
+class AdminContestSeasonApi(MethodView):
+    def put(self, contest_season_id):
+        data = request.get_json()
+        contest_season = ContestSeason.query.get_or_404(contest_season_id)
+        if data is None:
+            return api_abort(400)
+        name = data.get('name')
+        begin_time = data.get('beginTime')
+        end_time = data.get('endTime')
+        rule = data.get('rule')
+        if name is None or begin_time is None or end_time is None or rule is None:
+            return api_abort(400)
+        contest_season.name = name
+        contest_season.begin_time = begin_time
+        contest_season.end_time = end_time
+        contest_season.rule = rule
+        db.session.commit()
+        return api_abort(200)
+
+    def delete(self, contest_season_id):
+        contest_season = ContestSeason.query.get_or_404(contest_season_id)
+        contest = contest_season.contest
+        for item in contest:
+            db.session.delete(item)
+        db.session.delete(contest_season)
+        db.session.commit()
+        return api_abort(200)
+
+
+class AdminContestsApi(MethodView):
+    def post(self):
+        data = request.get_json()
+        if data is None:
+            return api_abort(200)
+        saiji = data.get('saiji')
+        name = data.get('name')
+        type_ = data.get('type')
+        problem_sum = data.get('problem')
+        penalty = data.get('penalty')
+        vj_data = data.get('data')
+        date = data.get('date')
+        time = data.get('time')
+        length = data.get('length')
+
+        try:
+            contest = Contest(name=name,type=type_,problem_sum=problem_sum,penalty=penalty,
+                              data=vj_data,date=date,time=time,length=length)
+            contest_season = ContestSeason.query.get_or_404(saiji)
+            contest.contest_season = contest_season
+            db.session.add(contest)
+            db.session.commit()
+            return api_abort(200)
+        except:
+            db.session.rollback()
+            return api_abort(400)
+
+

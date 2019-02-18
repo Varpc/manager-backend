@@ -4,11 +4,10 @@ from flask import jsonify, request, current_app
 from flask.views import MethodView
 from manager.apis.error import api_abort
 from manager.apis.schemas import post_schema, problems_schema, user_schema
-from manager.apis.auth import generate_token
-from manager.models import Post, User
+from manager.apis.auth import generate_token, get_user_from_token
+from manager.models import Post, User, Problems
 from manager.extensions import db
 from datetime import datetime
-
 
 """
 用于用户操作的api
@@ -17,6 +16,7 @@ from datetime import datetime
 
 class UserPostsApi(MethodView):
     """用于操作指定用户所有文章的api"""
+
     def get(self, user_id):
         """
         返回指定用户的文章
@@ -100,6 +100,7 @@ class UserPostApi(MethodView):
 
 class UserProblemApi(MethodView):
     """用于操作指定用户的刷题信息的api"""
+
     def get(self, user_id):
         """
         返回指定用户的刷题统计信息
@@ -112,6 +113,7 @@ class UserProblemApi(MethodView):
 
 class UserInfoApi(MethodView):
     """用于操作指定用户信息的api"""
+
     def get(self, user_id):
         """
         获取指定用户的信息
@@ -150,6 +152,7 @@ class UserInfoApi(MethodView):
 
 class UserHeadImageApi(MethodView):
     """用于修改用户头像的api"""
+
     def post(self, user_id):
         """
         修改用户头像，该api需使用multipart/form-data格式进行请求，并将头像所在的字段设置为'file'。获取头像后，会为头像生成一个全
@@ -163,7 +166,7 @@ class UserHeadImageApi(MethodView):
             filepath = os.path.join(current_app.config['IMAGE_DIR'], filename)
             file.save(filepath)
             image_url = current_app.config['IMAGE_UIR_PREFIX'] + filename
-
+            print(image_url)
             user = User.query.get_or_404(user_id)
             if user.image != current_app.config['DEFAULT_HEAD_IMAGE_URI']:
                 old_filename = user.image.split('/')[-1:][0]
@@ -179,6 +182,7 @@ class UserHeadImageApi(MethodView):
 
 class UserAuthTokenApi(MethodView):
     """用于用户登陆和登出的api"""
+
     def post(self):
         """
         用于用户登陆的api，通过json格式的请求体获取用户名和密码，返回用户的信息和token以及token的过期时间
@@ -187,20 +191,25 @@ class UserAuthTokenApi(MethodView):
         data = request.get_json()
         if not data:
             return api_abort(400, '无效的用户名或密码')
-        username = data.get('username')
-        password = data.get('password')
-        if username is None or password is None:
-            return api_abort(400, '无效的用户名和密码')
+        if data.get('re_login') is not None:  # 是否为使用token重新登陆
+            token = data.get('token')
+            user = get_user_from_token(token)
+            if user is None:
+                return api_abort(400)
+        else:
+            username = data.get('username')
+            password = data.get('password')
+            if username is None or password is None:
+                return api_abort(400, '无效的用户名和密码')
 
-        user = User.query.filter_by(username=username).first()
-        if user is None or not user.validate_password(password):
-            return api_abort(400, '用户名或密码错误')
+            user = User.query.filter_by(username=username).first()
+            if user is None or not user.validate_password(password):
+                return api_abort(400, '用户名或密码错误')
 
-        token, expiration = generate_token(user)
+        token = generate_token(user)
 
         response_data = user_schema(user)
         response_data['token'] = token
-        response_data['expiration'] = expiration
         response = jsonify(response_data)
         response.headers['Cache-Control'] = 'no-store'
         response.headers['Pragma'] = 'no-cache'
@@ -213,8 +222,10 @@ class UserAuthTokenApi(MethodView):
 
 class UserRegisterApi(MethodView):
     """用于用户注册的api"""
+
     def post(self):
         """
+        todo: 为其创建problem
         创建新用户
         :return: 用户的信息
         """
@@ -231,9 +242,13 @@ class UserRegisterApi(MethodView):
         if User.query.filter_by(username=username).first() is not None:
             return api_abort(400, '用户名已被占用')
 
-        user = User(username=username, name=name, class_=class_, is_admin=False, image='/static/image/1.jpeg')
+        user = User(username=username, name=name, class_=class_, is_admin=False,
+                    image=current_app.config['DEFAULT_HEAD_IMAGE_URI'])
         user.set_password(password)
+        problem = Problems()
+        problem.user = user
         db.session.add(user)
+        db.session.add(problem)
         db.session.commit()
 
         return jsonify(user_schema(user))

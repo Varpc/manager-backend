@@ -6,10 +6,11 @@ from crawler_manager import change_update_callback
 from flask import jsonify, request, current_app
 from flask.views import MethodView
 
-from manager.apis.schemas import problems_schema, jisuanke_schema, codeforces_schema, post_schema, group_schema
+from manager.apis.schemas import problems_schema, jisuanke_schema, codeforces_schema, post_schema, group_schema, \
+    contest_season_schema, contest_schema
 from manager.apis.error import api_abort
 from manager.extensions import db
-from manager.models import Problems, JiSuanKe, Codeforces, Root, Group, Post
+from manager.models import Problems, JiSuanKe, Codeforces, Root, Group, Post, ContestSeason, Contest
 
 
 """
@@ -24,6 +25,29 @@ class ProblemsApi(MethodView):
         problems = Problems.query.all()
         data = [problems_schema(item) for item in problems]
         return jsonify(data=data)
+
+
+class ContestSeasonApi(MethodView):
+    def get(self):
+        """返回所有的赛季信息"""
+        contest_season = ContestSeason.query.all()
+        data = [contest_season_schema(item) for item in contest_season]
+        return jsonify(data=data)
+
+
+class ContestSeasonContestApi(MethodView):
+    def get(self, contest_season_id):
+        """返回指定赛季下的所有比赛"""
+        contest_season = ContestSeason.query.get_or_404(contest_season_id)
+        contest = Contest.query.with_parent(contest_season).all()
+        data = [contest_schema(item) for item in contest]
+        return jsonify(data=data)
+
+
+class ContestApi(MethodView):
+    def get(self, contest_id):
+        contest = Contest.query.get_or_404(contest_id)
+        return jsonify(contest_schema(contest))
 
 
 class PostsApi(MethodView):

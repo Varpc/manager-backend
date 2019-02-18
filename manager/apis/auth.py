@@ -11,10 +11,22 @@ def generate_token(user):
     :param user: User实例
     :return: token字符串，过期时间(单位：s)
     """
-    expiration = 60 * 60 * 24
+    expiration = current_app.config['TOKEN_EXPIRATION']
     s = Serializer(current_app.config['SECRET_KEY'], expires_in=expiration)
     token = s.dumps({'id': user.id}).decode('ascii')
-    return token, expiration
+    return token
+
+
+def get_user_from_token(token):
+    s = Serializer(current_app.config['SECRET_KEY'])
+    try:
+        data = s.loads(token)
+    except (BadSignature, SignatureExpired):
+        return None
+    user = User.query.get(data['id'])
+    if user is None:
+        return None
+    return user
 
 
 def validate_token(token):

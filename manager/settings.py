@@ -13,12 +13,12 @@ db_uri = 'mysql+pymysql://root:12345@localhost/manager?charset=utf8'
 class BaseConfig(object):
     SECRET_KEY = os.getenv('SECRET_KEY', 'dev')  # 先从环境变量中获取密钥，获取不到为secret key
     SQLALCHEMY_TRACK_MODIFICATIONS = False  # 不追踪对象的修改
-
     IMAGE_DIR = image_dir
     IMAGE_DIR_SUFFIX = image_dir_suffix  # 相对路径下存储图片的文件夹
     IMAGE_UIR_PREFIX = '/image/'  # 图片请求时的前缀，即存储图片的文件夹在静态资源文件夹中的位置
     DEFAULT_HEAD_IMAGE_URI = '/image/1.jpg'
     DEFAULT_HOME_IMAGE_URI = '/image/default-home.png'
+    TOKEN_EXPIRATION = 60 * 60 * 24 * 30  # token过期时间，单位秒
 
 
 class DevelopmentConfig(BaseConfig):

@@ -97,6 +97,32 @@ class Group(db.Model):
     member = db.relationship('User', back_populates='group')
 
 
+class ContestSeason(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200), nullable=False)
+    begin_time = db.Column(db.BigInteger, nullable=False)
+    end_time = db.Column(db.BigInteger, nullable=False)
+    rule = db.Column(db.Text)
+    creator = db.Column(db.String(200), nullable=False, default='admin')
+    contest = db.relationship('Contest', back_populates='contest_season')
+
+
+class Contest(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200), nullable=False)
+    type = db.Column(db.Integer, nullable=False)  # 0 为个人赛， 1为组队赛
+    problem_sum = db.Column(db.Integer, nullable=False)  # 题目数量
+    penalty = db.Column(db.Integer, nullable=False)  # 每道题罚时，单位分钟
+    data = db.Column(db.Text, nullable=False)  # vj上的榜单数据
+    date = db.Column(db.BigInteger, nullable=False)  # 比赛日期，和GMT时间1970年1月1日之间相差的毫秒数
+    time = db.Column(db.BigInteger, nullable=False)  # 比赛时间，在一天中的第几秒
+    length = db.Column(db.Integer, nullable=False)  # 比赛时长,以秒为单位
+    creator = db.Column(db.String(200), default='admin')  # 创建者
+
+    contest_season_id = db.Column(db.Integer, db.ForeignKey('contest_season.id'))
+    contest_season = db.relationship('ContestSeason', back_populates='contest')
+
+
 # 近期比赛模型
 class JiSuanKe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
