@@ -4,7 +4,7 @@ import threading
 import time
 from crawler_manager import crawler_manager
 
-port = 5000
+port = 8000
 
 if __name__ == '__main__':
     crawler_thread = threading.Thread(target=crawler_manager, args=(port,))
